@@ -1,0 +1,18 @@
+<h1>Listing temps</h1>
+
+
+
+<br>
+
+
+
+ <% i = @temps.group_by_minute(:created_at).maximum(:outsidetemp)%>
+<% o = @temps.group_by_minute(:created_at).maximum(:insidetemp)%>
+
+<%= line_chart [
+  {name: "Series A", data: i},
+  {name: "Series B", data: o}
+
+] %>
+
+<%= link_to 'New Temp', new_temp_path %>

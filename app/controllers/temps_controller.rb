@@ -8,6 +8,11 @@ class TempsController < ApplicationController
     @temps = Temp.all
   end
 
+  def dashboard
+    @temps = Temp.all
+  end
+
+
   # GET /temps/1
   # GET /temps/1.json
   def show
