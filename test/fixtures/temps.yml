@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  insidetemp: 1.5
+  outsidetemp: 1.5
+
+two:
+  insidetemp: 1.5
+  outsidetemp: 1.5

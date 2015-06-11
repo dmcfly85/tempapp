@@ -1,0 +1,38 @@
+<h1>Listing temps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Insidetemp</th>
+      <th>Outsidetemp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @temps.each do |temp| %>
+      <tr>
+        <td><%= temp.insidetemp %></td>
+        <td><%= temp.outsidetemp %></td>
+        <td><%= link_to 'Show', temp %></td>
+        <td><%= link_to 'Edit', edit_temp_path(temp) %></td>
+        <td><%= link_to 'Destroy', temp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= line_chart @temps.group_by_minute(:created_at).maximum(:outsidetemp) %>
+
+ <% i = @temps.group_by_hour(:created_at).maximum(:outsidetemp)%>
+<% o = @temps.group_by_hour(:created_at).maximum(:insidetemp)%>
+
+<%= line_chart [
+  {name: "Series A", data: i},
+  {name: "Series B", data: o}
+
+] %>
+
+<%= link_to 'New Temp', new_temp_path %>
