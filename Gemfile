@@ -20,6 +20,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
 gem 'pg'
+gem 'rails_12factor', group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
