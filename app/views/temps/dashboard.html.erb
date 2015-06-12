@@ -6,13 +6,11 @@
 
 
 
- <% i = @temps.group_by_minute(:created_at).maximum(:outsidetemp)%>
-<% o = @temps.group_by_minute(:created_at).maximum(:insidetemp)%>
+ <% o = @temps.group_by_minute(:created_at).maximum(:outsidetemp)%>
+<% i = @temps.group_by_minute(:created_at).maximum(:insidetemp)%>
 
 <%= line_chart [
-  {name: "Series A", data: i},
-  {name: "Series B", data: o}
+  {name: "Insdie", data: i},
+  {name: "Outside", data: o}
 
 ] %>
-
-<%= link_to 'New Temp', new_temp_path %>
