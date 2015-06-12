@@ -1,7 +1,7 @@
 <h1>Listing temps</h1>
 <%=@temps.count%>
 
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
       <th>Insidetemp</th>
@@ -15,7 +15,7 @@
       <tr>
         <td><%= temp.insidetemp %></td>
         <td><%= temp.outsidetemp %></td>
-        <td><%= link_to 'Show', temp %></td>
+        <td><%= temp.created_at.strftime("%H:%M:%S") %></td>
         <td><%= link_to 'Edit', edit_temp_path(temp) %></td>
         <td><%= link_to 'Destroy', temp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -24,16 +24,3 @@
 </table>
 
 <br>
-
-<%= line_chart @temps.group_by_minute(:created_at).maximum(:outsidetemp) %>
-
- <% i = @temps.group_by_hour(:created_at).maximum(:outsidetemp)%>
-<% o = @temps.group_by_hour(:created_at).maximum(:insidetemp)%>
-
-<%= line_chart [
-  {name: "Series A", data: i},
-  {name: "Series B", data: o}
-
-] %>
-
-<%= link_to 'New Temp', new_temp_path %>
