@@ -7,10 +7,10 @@
 <% i = @temps.group_by_minute(:created_at).maximum(:insidetemp)%>
 
 <%= line_chart [
-  {name: "Insdie", data: i},
+  {name: "Insdie", data: i,},
   {name: "Outside", data: o}
 
-] %>
+], min: 40, max: 110, height: "500px" %>
 <center>
 Current Outside: <%=@temps.last.outsidetemp%><br>
 Current Inside: <%=@temps.last.insidetemp%>
