@@ -9,7 +9,8 @@ class TempsController < ApplicationController
   end
 
   def dashboard
-    @temps = Temp.all
+    @daytemps = Temp.where("created_at > ?", Time.now-1.days)
+    @weektemps = Temp.where("created_at > ?", Time.now-7.days)
   end
 
 
