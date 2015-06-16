@@ -1,2 +1,2 @@
 # tempapp
-Accepts temperatures update from arduino device and graphs
+Accepts temperature readings from arduino device via http get request and graphs
